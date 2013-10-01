@@ -29,7 +29,14 @@ get '/accounts/:id/edit' do
 end
 
 post '/accounts' do
-  # create
+  @account = {
+    id: params[:id],
+    username: params[:username]
+  }
+
+  ACCOUNTS[params[:id]] = @account
+
+  redirect "/accounts/#{params[:id]}"
 end
 
 put '/accounts/:id' do
